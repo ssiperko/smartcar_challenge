@@ -1,0 +1,20 @@
+{
+  "name": "smartcar",
+  "version": "1.0.0",
+  "description": "REST API created for Smartcar coding challenge.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ssiperko/smartcar_challenge.git"
+  },
+  "author": "Steven Siperko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ssiperko/smartcar_challenge/issues"
+  },
+  "homepage": "https://github.com/ssiperko/smartcar_challenge#readme"
+}
