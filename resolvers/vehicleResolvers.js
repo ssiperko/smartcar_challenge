@@ -64,7 +64,7 @@ exports.get_vehicle_info_by_id = (req, res, next) => {
             return res.status(200).json(transformed_vehicle_info_data);
         })
         .catch((error) => {
-            // TODO: log incomming error
+            log_errors(error.message, 'Resolvers/get_vehicle_info_by_id');
             error_handler(res, error);
         });
     } catch (error) {
@@ -106,7 +106,7 @@ exports.get_door_status_by_id = (req, res, next) => {
             return res.status(200).json(transformed_door_security_data);
         })
         .catch((error) => {
-            // TODO: log incomming error
+            log_errors(error.message, 'Resolvers/get_door_status_by_id');
             error_handler(res, error);
         });
     } catch (error) {
