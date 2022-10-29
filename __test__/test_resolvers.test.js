@@ -1,9 +1,9 @@
 const { 
     ELECTRIC,
     NON_GAS_ERROR
-} = require('../constants');
+} = require('../src/constants');
 
-const { transform_vehicle_data, transform_door_security_data, transform_range_data } = require('../vehicle_data_transformers');
+const { transform_vehicle_data, transform_door_security_data, transform_range_data } = require('../src/vehicle_data_transformers');
 
 // vehicle info happy path
 test('transforms vehicle data correctly', () => {

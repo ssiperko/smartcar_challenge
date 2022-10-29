@@ -12,7 +12,7 @@ const {
     ERROR, 
     NOT_FOUND,
     TOO_MANY_REQUESTS
-} = require('./constants')
+} = require('./src/constants')
 
 const vehicleRoutes = require('./routes/vehicleRoutes');
 

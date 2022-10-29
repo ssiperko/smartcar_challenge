@@ -12,21 +12,21 @@ const {
     INVALID_ACTION, 
     GAS,
     ELECTRIC
-} = require('../constants');
+} = require('../src/constants');
 
 const { 
     get_vehicle_info_from_GM_by_id,
     get_door_status_from_GM_by_id,
     get_range_from_GM_by_id,
     request_engine_status_change_from_GM
- } = require('../services');
+ } = require('../src/services');
 
  const { 
     transform_vehicle_data,
     transform_door_security_data,
     transform_range_data,
     transform_engine_status_data
-} = require('../vehicle_data_transformers');
+} = require('../src/vehicle_data_transformers');
 
 const axios = require('axios');
 const { validationResult } = require('express-validator');

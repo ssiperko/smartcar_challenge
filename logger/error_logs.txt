@@ -1,2 +1,4 @@
 Sat Oct 29 2022 08:43:09 GMT-0400 (Eastern Daylight Time) --- Error message: Cannot fetch battery information on non-electric vehicles ---  Thrown from: Resolvers/resolve_battery_and_fuel_range_helper
 Sat Oct 29 2022 08:43:11 GMT-0400 (Eastern Daylight Time) --- Error message: Cannot fetch battery information on non-electric vehicles ---  Thrown from: Resolvers/resolve_battery_and_fuel_range_helper
+Sat Oct 29 2022 10:32:58 GMT-0400 (Eastern Daylight Time) --- Error message: Cannot fetch fuel tank information on electric vehicles ---  Thrown from: Resolvers/resolve_battery_and_fuel_range_helper
+Sat Oct 29 2022 10:35:42 GMT-0400 (Eastern Daylight Time) --- Error message: Cannot fetch fuel tank information on electric vehicles ---  Thrown from: Resolvers/resolve_battery_and_fuel_range_helper
