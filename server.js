@@ -21,7 +21,7 @@ const app = express();
 // config for rate limiter
 const limiter = rateLimit({
 	windowMs: 60 * 1000, // 1 minute
-	max: 2, // max requests per window
+	max: 5, // max requests per window
     message: {ERROR: TOO_MANY_REQUESTS},
 	standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
 	legacyHeaders: false, // Disable the `X-RateLimit-*` headers

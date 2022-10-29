@@ -30,28 +30,30 @@ const {
  */
 exports.transform_vehicle_data = (response) => {
     const data = response.data.data;
+    // Clarify requirements: when response is missing data should we throw an Error or return null
     const vin = data?.vin?.value ? data?.vin?.value : null;
     const color = data?.color?.value ? data?.color?.value : null;
-    // GM docs have this field as type Boolean but it is returning a string which is a truthy value
-    // so be careful not to evaluate this as a bool becuasue you will always get sedan in that case
-    // fourDoorSedan: { type: 'Boolean', value: 'True' }
+    // GM docs have this field as type Boolean but it is returning a string be careful
+    // not to resolve as bool
     let door_count;
+    const twoDoorCoupe = data?.twoDoorCoupe?.value;
+    const fourDoorSedan = data?.fourDoorSedan?.value;
     if (
-        response?.data?.data?.twoDoorCoupe?.value 
-        && response?.data?.data?.twoDoorCoupe?.value === 'True' 
-        && response?.data?.data?.fourDoorSedan?.value === 'False'
+        twoDoorCoupe
+        && twoDoorCoupe === 'True' 
+        && fourDoorSedan === 'False'
     ) {
         door_count = COUPE;
     } else if (
-        response?.data?.data?.fourDoorSedan?.value 
-        && response?.data?.data?.fourDoorSedan?.value === 'True' 
-        && response?.data?.data?.twoDoorCoupe?.value === 'False'
+        fourDoorSedan
+        && fourDoorSedan === 'True' 
+        && twoDoorCoupe === 'False'
     ) {
         door_count = SEDAN;
     } else {
         door_count = null;
     }
-    const drive_train = data?.driveTrain?.value ? data?.driveTrain?.value : null;
+    const drive_train = data?.driveTrain?.value ? data?.driveTrain?.value : null; 
     return {"vin": vin, "color" : color, "doorCount": door_count, "driveTrain": drive_train}
 }
 

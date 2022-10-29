@@ -249,7 +249,6 @@ const resolve_battery_and_fuel_range_helper = (res, req_id, power_type) => {
  * @returns {Boolean || Error}
  */
 const validate_GM_res = (res, status, data, req_id) => {
-    console.log(status, data)
     if (status == '404'){
         if (data.reason == `Vehicle id: ${req_id} not found.`){
             throw new Error(INVALID_ID);

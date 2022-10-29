@@ -1,9 +1,6 @@
 const { 
-    JSON, 
-    START, 
-    START_VEHICLE, 
-    STOP_VEHICLE,
-    BAD_GATEWAY
+    ELECTRIC,
+    NON_GAS_ERROR
 } = require('../constants');
 
 const { transform_vehicle_data, transform_door_security_data, transform_range_data } = require('../vehicle_data_transformers');
@@ -129,27 +126,13 @@ test('should return null for malformed fields', () => {
     expect(transform_vehicle_data(response)).toStrictEqual(result);
 });
 
-// // vehicle info happy path
-// test('transforms vehicle data correctly', () => {
-//     const response = {
-//         'data': {
-//             'service': 'getVehicleInfo',
-//             'status': '200',
-//             'data': {
-//             'vin': { 'type': 'String', 'value': '123123412412' },
-//             'color': { 'type': 'String', 'value': 'Metallic Silver' },
-//             'fourDoorSedan': { 'type': 'Boolean', 'value': 'True' },
-//             'twoDoorCoupe': { 'type': 'Boolean', 'value': 'False' },
-//             'driveTrain': { 'type': 'String', 'value': 'v8' }
-//             }
-//         }
-//     };
-
-//     const result = {
-//         "vin": "123123412412",
-//         "color": "Metallic Silver",
-//         "doorCount": 4,
-//         "driveTrain": "v8"
-//     }
-//     expect((response, 'electric')).toStrictEqual(result);
-// })
+// vehicle info happy path
+test('transforms vehicle data correctly', () => {
+    const response = {
+        tankLevel: { type: 'Null', value: '100.00' },
+        batteryLevel: { type: 'Number', value: 'null' }
+      };
+    expect(() => {
+        transform_range_data(response, ELECTRIC);
+    }).toThrow(NON_GAS_ERROR);
+})
