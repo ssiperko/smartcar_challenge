@@ -30,6 +30,7 @@ const {
 
 const axios = require('axios');
 const { validationResult } = require('express-validator');
+const { log_errors } = require('../logger/logger');
 
 
 /**
@@ -67,6 +68,7 @@ exports.get_vehicle_info_by_id = (req, res, next) => {
             error_handler(res, error);
         });
     } catch (error) {
+        log_errors(error.message, 'Resolvers/get_vehicle_info_by_id');
         error_handler(res, error);
     }
 };
@@ -108,6 +110,7 @@ exports.get_door_status_by_id = (req, res, next) => {
             error_handler(res, error);
         });
     } catch (error) {
+        log_errors(error.message, 'Resolvers/get_door_status_by_id');
         error_handler(res, error);
     }
 };
@@ -131,6 +134,7 @@ exports.get_fuel_range_by_id = (req, res, next) => {
         resolve_battery_and_fuel_range_helper(res, req_id, GAS);
         return;
     } catch (error) {
+        log_errors(error.message, 'Resolvers/get_fuel_range_by_id');
         error_handler(res, error); 
     }
 };
@@ -154,6 +158,7 @@ exports.get_battery_range_by_id = (req, res, next) => {
         resolve_battery_and_fuel_range_helper(res, req_id, ELECTRIC);
         return;
     } catch (error) {
+        log_errors(error.message, 'Resolvers/get_battery_range_by_id');
         error_handler(res, error); 
     }
 };
@@ -181,6 +186,9 @@ exports.update_engine_status_by_id = (req, res, next) => {
                 return {ERROR: INVALID_ID};
             };
         });
+        for(let i in res_errors){
+            log_errors(res_errors[i].ERROR, 'Resolvers/update_engine_status_by_id');
+        }
         return res.status(422).send(res_errors);
     }
 
@@ -199,7 +207,7 @@ exports.update_engine_status_by_id = (req, res, next) => {
         return res.status(200).send(transformed_engine_status_data);
     })
     .catch((error) => {
-        // TODO: log incomming error
+        log_errors(error.message, 'Resolvers/update_engine_status_by_id');
         error_handler(res, error);
     });
 };
@@ -225,10 +233,9 @@ const resolve_battery_and_fuel_range_helper = (res, req_id, power_type) => {
         return res.status(200).json({"percent": transformed_range_data});
     })
     .catch((error) => {
-        // TODO: log incomming error
+        log_errors(error.message, 'Resolvers/resolve_battery_and_fuel_range_helper');
         error_handler(res, error);
     });
-
 };
 
 /**

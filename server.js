@@ -5,6 +5,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
+const { log_errors } = require('./logger/logger');
+
 const { 
     ERROR, 
     NOT_FOUND 
@@ -21,6 +23,7 @@ app.use(vehicleRoutes);
  * Catches any requests with no route match and returns 404 to client.
  */
 app.use('/', (req, res, next) => {
+    log_errors(Error(NOT_FOUND), '/server.js');
     res.status(404).json({ERROR: NOT_FOUND});
 });
 
