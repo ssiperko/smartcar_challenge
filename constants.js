@@ -24,3 +24,4 @@ exports.NON_ELECTRIC_ERROR = 'Cannot fetch battery information on non-electric v
 exports.NON_GAS_ERROR = 'Cannot fetch fuel tank information on electric vehicles';
 exports.INVALID_ACTION = 'Action is invalid';
 exports.INVALID_ID = 'ID is invalid';
+exports.TOO_MANY_REQUESTS = 'Too many requests, please try again later.'
